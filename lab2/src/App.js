@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import SimpleProp from './simpleProp';
-import './App.css';
+import SearchBar from './searchBar';
+import FoodCategories from './foodCategories';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 const items = [
 {"name":"carrot cake","description":"home made here","price":"2.50","category":"cake","available":"no","_id":"1fhvraM8vnUQN5bS"},
 {"name":"sandwiches","description":"with a variety of fillings","price":"2.50","category":"snack","available":"no","_id":"4cc74zd1NItLzSMP"},
@@ -10,7 +14,7 @@ const items = [
 {"name":"soup","description":"ask for soups available today","price":"2.00","category":"snack","available":"yes","_id":"FUrulAa46eiSFUPM"},
 {"name":"pizza","description":"ham and pineapple or four cheese","price":"5.00","category":"main","available":"yes","_id":"U9YkPp94immRUsjw"},
 {"name":"baked potato","description":"with cheese, coleslaw, beans or tuna","price":"4.50","category":"main","available":"yes","_id":"UrNK9hyiW6ZUJYqt"},
-{"name":"chocolate cake","description":"with cream","price":"2.50","category":"cake","available":"yes","_id":"aT7WD1X87ztQKgS0"},
+{"name":"chocolate cake","description":"with cream","price":"2.50","category":"cake","available":"yes","_id":"aT7WD1X87ztQKgS01"},
 {"name":"apple pie","description":"with cream or custard","price":"3.50","category":"pudding","available":"yes","_id":"gOMxx3ZA3OCMwGrp"},
 {"name":"cheesecake","description":"with cream","price":"3.00","category":"pudding","available":"yes","_id":"gPmLlIUI0kn6EJXm"},
 {"name":"fish and chips","description":"locally caught ","price":"6.50","category":"main","available":"yes","_id":"jtw4LZgWMovX5QVi"},
@@ -21,18 +25,55 @@ const items = [
 ]
 
 class App extends Component {
-render() {
-return (
-<div>
-{items.map((item) => (
-<SimpleProp
-key={item._id}
-name= {item.name}
-description={item.description}
-price={item.price}
-/>
-))}
-</div>);
+  constructor(props) {
+    super(props);
+    this.state = {
+      filterText: ''
+  };
 }
+handleFilterTextChange = (filterText) => this.setState({
+  filterText: filterText
+});
+render() {
+  return (
+  <div className="appStyle" >
+    <h1>Menu</h1>
+    <div>
+      <SearchBar
+        filterText={this.state.filterText}
+        onFilterTextChange={this.handleFilterTextChange}
+      />
+ 
+      <FoodCategories 
+      menuCategory='drinks'
+      items={items}
+      filterText={this.state.filterText}
+    />
+    <FoodCategories  
+      menuCategory='cake'
+      items={items}
+      filterText={this.state.filterText}
+    />
+    <FoodCategories 
+      menuCategory='snack'
+      items={items}
+      filterText={this.state.filterText}
+    />
+<FoodCategories  
+      menuCategory='main'
+      items={items}
+      filterText={this.state.filterText}
+    />
+    <FoodCategories 
+      menuCategory='pudding'
+      items={items}
+      filterText={this.state.filterText}
+    /></div>  
+  </div>
+
+  );
+  }
 }
 export default App;
+
+

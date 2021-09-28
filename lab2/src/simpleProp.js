@@ -1,15 +1,19 @@
-import React, { Component } from 'react'
-class SimpleProp extends Component {
-render() {
-return (
-<div>
-<span>
-{this.props.name}<span>&nbsp;</span>
-{this.props.description}<span>&nbsp;</span>
-£{this.props.price}
-</span>
-</div>
-)
-}
-}
-export default SimpleProp
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+ class SimpleProp  extends Component { 
+              render() {
+                     
+          return ( 
+         <div> 
+           <span style={{display:"inline-block", width:"40%"}}> 
+             {this.props.name} 
+             {this.props.description} 
+              £{this.props.price}  
+           </span> 
+        </div> 
+        )  
+  } } 
+export default SimpleProp; 
+
+
