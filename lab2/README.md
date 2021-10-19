@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# in order to run this solution you should download the zip file, extract the files, open a terminal window, navigate to the folder containing package.json, use npm install to install any dependencies then use npm start to run the app in developer mode
+
 ## Available Scripts
 
 In the project directory, you can run:
